@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tracker Jeûne">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <link rel="manifest" href="./manifest.json">
+    <title>Tracker de Jeûne - Votre Compagnon Autophagie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+        min-height: 100vh;
+        min-height: -webkit-fill-available; /* iOS Safari */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px) env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        padding: 30px;
+        max-width: 500px;
+        width: 100%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+        text-align: center;
+        color: #2d6a2f;
+        margin-bottom: 10px;
+        font-size: 28px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 25px;
+        font-size: 14px;
+    }
+
+    .setup-section {
+        margin-bottom: 25px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+        font-weight: 500;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: all 0.3s;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #4a9b4e;
+    }
+
+    .btn-start {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, #43a047 0%, #66bb6a 100%);
+        color: white;
+        border: none;
+        border-radius: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .btn-start:hover {
+        transform: translateY(-2px);
+    }
+
+    .tracking-section {
+        display: none;
+    }
+
+    .timer-display {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .time-elapsed {
+        font-size: 48px;
+        font-weight: bold;
+        color: #2d6a2f;
+        margin-bottom: 10px;
+    }
+
+    .target-time {
+        color: #5a8c5c;
+        font-size: 14px;
+    }
+
+    .progress-container {
+        margin-bottom: 30px;
+    }
+
+    .progress-bar-bg {
+        width: 100%;
+        height: 30px;
+        background: #e8f5e9;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #81c784 0%, #4caf50 100%);
+        border-radius: 15px;
+        transition: width 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+    }
+
+    .progress-percentage {
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .phase-indicator {
+        background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+        color: white;
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .phase-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .phase-description {
+        font-size: 14px;
+        opacity: 0.95;
+    }
+
+    .benefits-list {
+        background: #f1f8e9;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .benefits-title {
+        color: #33691e;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .benefit-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        color: #558b2f;
+        font-size: 14px;
+    }
+
+    .benefit-icon {
+        width: 20px;
+        height: 20px;
+        background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+        border-radius: 50%;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+    }
+
+    .motivation-card {
+        background: linear-gradient(135deg, #aed581 0%, #8bc34a 100%);
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #fff;
+    }
+
+    .motivation-text {
+        font-size: 16px;
+        font-style: italic;
+        font-weight: 500;
+    }
+
+    .controls {
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn-control {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn-stop {
+        background: #ef5350;
+        color: white;
+    }
+
+    .btn-reset {
+        background: #26a69a;
+        color: white;
+    }
+
+    .btn-control:hover {
+        transform: translateY(-2px);
+    }
+
+    .milestone-alert {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        display: none;
+        z-index: 1000;
+    }
+
+    .milestone-emoji {
+        font-size: 60px;
+        margin-bottom: 10px;
+    }
+
+    .milestone-message {
+        font-size: 18px;
+        color: #2e7d32;
+        font-weight: bold;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .pulsing {
+        animation: pulse 2s infinite;
+    }
+
+    .badges-section {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .badges-title {
+        text-align: center;
+        color: #2e7d32;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .badges-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    @media (max-width: 600px) {
+        .badges-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .badge {
+        background: rgba(255, 255, 255, 0.6);
+        border: 2px solid #e0e0e0;
+        border-radius: 15px;
+        padding: 10px;
+        text-align: center;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        opacity: 0.4;
+        filter: grayscale(100%);
+    }
+
+    .badge.unlocked {
+        opacity: 1;
+        filter: grayscale(0%);
+        background: linear-gradient(135deg, #ffffff 0%, #f1f8e9 100%);
+        border-color: #66bb6a;
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        transform: scale(1.05);
+    }
+
+    .badge.unlocked::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+            45deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        transform: rotate(45deg);
+        animation: shine 0.5s ease-in-out;
+    }
+
+    @keyframes shine {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .badge-icon {
+        font-size: 28px;
+        margin-bottom: 5px;
+    }
+
+    .badge-time {
+        font-weight: bold;
+        color: #2e7d32;
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .badge-name {
+        font-weight: 600;
+        color: #388e3c;
+        font-size: 12px;
+        margin-bottom: 3px;
+    }
+
+    .badge-status {
+        font-size: 10px;
+        color: #666;
+        line-height: 1.2;
+    }
+
+    .badge.unlocked .badge-status {
+        color: #4caf50;
+        font-weight: 500;
+    }
+
+    .achievements-stats {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-label {
+        color: #558b2f;
+        font-size: 12px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .stat-value {
+        color: #2e7d32;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    @keyframes badgeUnlock {
+        0% { 
+            transform: scale(0) rotate(0deg);
+            opacity: 0;
+        }
+        50% { 
+            transform: scale(1.2) rotate(180deg);
+            opacity: 1;
+        }
+        100% { 
+            transform: scale(1) rotate(360deg);
+            opacity: 1;
+        }
+    }
+
+    .badge.unlocking {
+        animation: badgeUnlock 0.6s ease-out;
+    }
+
+    .badge.unlocked {
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .badge.unlocked:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    }
+
+    /* Modal de détails des badges */
+    .badge-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    .badge-modal-content {
+        background: white;
+        border-radius: 20px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 30px;
+        position: relative;
+        cursor: auto;
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        background: #ef5350;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .modal-badge-icon {
+        font-size: 60px;
+        margin-bottom: 10px;
+    }
+
+    .modal-badge-title {
+        font-size: 24px;
+        color: #2e7d32;
+        margin-bottom: 5px;
+    }
+
+    .modal-badge-time {
+        color: #66bb6a;
+        font-size: 18px;
+    }
+
+    .modal-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f5f5f5;
+        border-radius: 10px;
+    }
+
+    .modal-section h3 {
+        color: #2e7d32;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .modal-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .modal-section li {
+        padding: 5px 0;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .modal-section li:before {
+        content: "•";
+        color: #66bb6a;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+    }
+
+    .tip-box {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 10px;
+    }
+
+    .tip-box h4 {
+        color: #2e7d32;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .tip-box p {
+        color: #388e3c;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    /* Améliorations mobile */
+    @media (max-width: 480px) {
+        .container {
+            margin: 10px;
+            padding: 20px;
+            max-width: none;
+        }
+        
+        .badges-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        
+        .badge {
+            padding: 8px;
+        }
+        
+        .badge-time {
+            font-size: 14px;
+        }
+        
+        .badge-name {
+            font-size: 11px;
+        }
+        
+        .modal-badge-content {
+            max-width: 95vw;
+            margin: 10px;
+            max-height: 85vh;
+        }
+        
+        .time-elapsed {
+            font-size: 36px;
+        }
+    }
+
+    /* Styles pour iOS */
+    input, button {
+        -webkit-appearance: none;
+        border-radius: 10px;
+    }
+    
+    button {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+    
+    .btn-clear-data {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        transition: all 0.2s;
+    }
+    
+    .btn-clear-data:active {
+        transform: scale(0.95);
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>🌿 Tracker de Jeûne</h1>
+        <p class="subtitle">Votre compagnon vers l'autophagie</p>
+
+    <div class="setup-section" id="setupSection">
+        <div class="input-group">
+            <label for="startDate">Date et heure de début du jeûne :</label>
+            <input type="datetime-local" id="startDate">
+        </div>
+        <div class="input-group">
+            <label for="targetHours">Objectif de jeûne (heures) :</label>
+            <input type="number" id="targetHours" placeholder="Ex: 16, 24, 48..." min="1" max="168">
+        </div>
+        <button class="btn-start" onclick="startFasting()">🚀 Commencer le Jeûne</button>
+    </div>
+
+    <div class="tracking-section" id="trackingSection">
+        <div class="timer-display">
+            <div class="time-elapsed" id="timeElapsed">00:00:00</div>
+            <div class="target-time" id="targetTime">Objectif : --</div>
+            <div class="time-remaining" id="timeRemaining" style="color: #81c784; font-size: 16px; margin-top: 5px;">⏳ Reste : --</div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar-bg">
+                <div class="progress-bar" id="progressBar" style="width: 0%">
+                    <span class="progress-percentage" id="progressPercentage">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="badges-section">
+            <h3 class="badges-title">🏆 Tableau des Succès</h3>
+            <div class="badges-grid">
+                <div class="badge" id="badge-0.5" data-hours="0.5" onclick="showBadgeDetails(0.5)">
+                    <div class="badge-icon">🌤️</div>
+                    <div class="badge-time">30min</div>
+                    <div class="badge-name">Première Demi-heure</div>
+                    <div class="badge-status">Début du voyage</div>
+                </div>
+                <div class="badge" id="badge-1" data-hours="1" onclick="showBadgeDetails(1)">
+                    <div class="badge-icon">💧</div>
+                    <div class="badge-time">1h</div>
+                    <div class="badge-name">Hydratation Active</div>
+                    <div class="badge-status">Système digestif au repos</div>
+                </div>
+                <div class="badge" id="badge-2" data-hours="2" onclick="showBadgeDetails(2)">
+                    <div class="badge-icon">🌿</div>
+                    <div class="badge-time">2h</div>
+                    <div class="badge-name">Digestion Complète</div>
+                    <div class="badge-status">Insuline stabilisée</div>
+                </div>
+                <div class="badge" id="badge-4" data-hours="4" onclick="showBadgeDetails(4)">
+                    <div class="badge-icon">🌱</div>
+                    <div class="badge-time">4h</div>
+                    <div class="badge-name">Débutant</div>
+                    <div class="badge-status">Transition métabolique</div>
+                </div>
+                <div class="badge" id="badge-6" data-hours="6" onclick="showBadgeDetails(6)">
+                    <div class="badge-icon">🔋</div>
+                    <div class="badge-time">6h</div>
+                    <div class="badge-name">Mode Économie</div>
+                    <div class="badge-status">Corps en adaptation</div>
+                </div>
+                <div class="badge" id="badge-8" data-hours="8" onclick="showBadgeDetails(8)">
+                    <div class="badge-icon">🔥</div>
+                    <div class="badge-time">8h</div>
+                    <div class="badge-name">Initié</div>
+                    <div class="badge-status">Glycogène épuisé</div>
+                </div>
+                <div class="badge" id="badge-10" data-hours="10" onclick="showBadgeDetails(10)">
+                    <div class="badge-icon">💪</div>
+                    <div class="badge-time">10h</div>
+                    <div class="badge-name">Force Mentale</div>
+                    <div class="badge-status">Pic de difficultés</div>
+                </div>
+                <div class="badge" id="badge-12" data-hours="12" onclick="showBadgeDetails(12)">
+                    <div class="badge-icon">⚡</div>
+                    <div class="badge-time">12h</div>
+                    <div class="badge-name">Persévérant</div>
+                    <div class="badge-status">Entrée en cétose</div>
+                </div>
+                <div class="badge" id="badge-14" data-hours="14" onclick="showBadgeDetails(14)">
+                    <div class="badge-icon">🧘</div>
+                    <div class="badge-time">14h</div>
+                    <div class="badge-name">Zen Attitude</div>
+                    <div class="badge-status">Clarté mentale</div>
+                </div>
+                <div class="badge" id="badge-16" data-hours="16" onclick="showBadgeDetails(16)">
+                    <div class="badge-icon">✨</div>
+                    <div class="badge-time">16h</div>
+                    <div class="badge-name">Guerrier</div>
+                    <div class="badge-status">Autophagie légère</div>
+                </div>
+                <div class="badge" id="badge-18" data-hours="18" onclick="showBadgeDetails(18)">
+                    <div class="badge-icon">🦸</div>
+                    <div class="badge-time">18h</div>
+                    <div class="badge-name">Super Héros</div>
+                    <div class="badge-status">Pouvoirs activés</div>
+                </div>
+                <div class="badge" id="badge-20" data-hours="20" onclick="showBadgeDetails(20)">
+                    <div class="badge-icon">💫</div>
+                    <div class="badge-time">20h</div>
+                    <div class="badge-name">Étoile Montante</div>
+                    <div class="badge-status">Excellence métabolique</div>
+                </div>
+                <div class="badge" id="badge-24" data-hours="24" onclick="showBadgeDetails(24)">
+                    <div class="badge-icon">🎯</div>
+                    <div class="badge-time">24h</div>
+                    <div class="badge-name">Champion</div>
+                    <div class="badge-status">Autophagie active</div>
+                </div>
+                <div class="badge" id="badge-30" data-hours="30" onclick="showBadgeDetails(30)">
+                    <div class="badge-icon">🔮</div>
+                    <div class="badge-time">30h</div>
+                    <div class="badge-name">Visionnaire</div>
+                    <div class="badge-status">Nettoyage profond</div>
+                </div>
+                <div class="badge" id="badge-36" data-hours="36" onclick="showBadgeDetails(36)">
+                    <div class="badge-icon">💎</div>
+                    <div class="badge-time">36h</div>
+                    <div class="badge-name">Maître</div>
+                    <div class="badge-status">Régénération profonde</div>
+                </div>
+                <div class="badge" id="badge-42" data-hours="42" onclick="showBadgeDetails(42)">
+                    <div class="badge-icon">🌸</div>
+                    <div class="badge-time">42h</div>
+                    <div class="badge-name">Sage</div>
+                    <div class="badge-status">Renaissance cellulaire</div>
+                </div>
+                <div class="badge" id="badge-48" data-hours="48" onclick="showBadgeDetails(48)">
+                    <div class="badge-icon">👑</div>
+                    <div class="badge-time">48h</div>
+                    <div class="badge-name">Légende</div>
+                    <div class="badge-status">Pic d'autophagie</div>
+                </div>
+                <div class="badge" id="badge-60" data-hours="60" onclick="showBadgeDetails(60)">
+                    <div class="badge-icon">🏔️</div>
+                    <div class="badge-time">60h</div>
+                    <div class="badge-name">Titan</div>
+                    <div class="badge-status">Force ultime</div>
+                </div>
+                <div class="badge" id="badge-72" data-hours="72" onclick="showBadgeDetails(72)">
+                    <div class="badge-icon">🌟</div>
+                    <div class="badge-time">72h</div>
+                    <div class="badge-name">Mythique</div>
+                    <div class="badge-status">Maîtrise totale</div>
+                </div>
+            </div>
+            <div class="achievements-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Badges débloqués:</span>
+                    <span class="stat-value" id="badgesCount">0/19</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Niveau atteint:</span>
+                    <span class="stat-value" id="levelReached">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-indicator" id="phaseIndicator">
+            <div class="phase-name" id="phaseName">Phase de Démarrage</div>
+            <div class="phase-description" id="phaseDescription">Votre voyage commence...</div>
+        </div>
+
+        <div class="benefits-list" id="benefitsList">
+            <div class="benefits-title">✨ Ce qui se passe maintenant :</div>
+            <div id="currentBenefits"></div>
+        </div>
+
+        <div class="motivation-card">
+            <div class="motivation-text" id="motivationText">Chaque minute compte ! Votre corps se régénère.</div>
+        </div>
+
+        <div class="controls">
+            <button class="btn-control btn-stop" onclick="pauseFasting()">⏸️ Pause</button>
+            <button class="btn-control btn-reset" onclick="resetFasting()">🔄 Réinitialiser</button>
+        </div>
+        
+        <div style="margin-top: 15px; text-align: center;">
+            <button class="btn-clear-data" onclick="clearAllData()" style="background: #ff7043; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-size: 12px; cursor: pointer;">
+                🗑️ Effacer toutes les données
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="milestone-alert" id="milestoneAlert">
+    <div class="milestone-emoji" id="milestoneEmoji">🎉</div>
+    <div class="milestone-message" id="milestoneMessage">Bravo !</div>
+</div>
+
+<div class="badge-modal" id="badgeModal" onclick="closeBadgeModal(event)">
+    <div class="badge-modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeBadgeModal()">×</button>
+        <div class="modal-header">
+            <div class="modal-badge-icon" id="modalBadgeIcon">🏆</div>
+            <h2 class="modal-badge-title" id="modalBadgeTitle">Titre du Badge</h2>
+            <p class="modal-badge-time" id="modalBadgeTime">Temps requis</p>
+        </div>
+        
+        <div class="modal-section">
+            <h3>🧬 Ce qui se passe dans votre corps</h3>
+            <div id="modalPhysiology"></div>
+        </div>
+        
+        <div class="modal-section">
+            <h3>😊 Ce que vous pourriez ressentir</h3>
+            <div id="modalSymptoms"></div>
+        </div>
+        
+        <div class="modal-section">
+            <h3>💡 Astuces pour tenir bon</h3>
+            <div id="modalTips"></div>
+        </div>
+        
+        <div class="tip-box">
+            <h4>🎯 Motivation</h4>
+            <p id="modalMotivation">Continuez, vous y êtes presque !</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    let fastingInterval;
+    let startTime;
+    let targetDuration;
+    let isPaused = false;
+    let pausedTime = 0;
+    let milestoneShown = {};
+    let unlockedBadges = {};
+
+    const badgeLevels = {
+        0.5: "Première Demi-heure",
+        1: "Hydratation Active",
+        2: "Digestion Complète",
+        4: "Débutant",
+        6: "Mode Économie",
+        8: "Initié", 
+        10: "Force Mentale",
+        12: "Persévérant",
+        14: "Zen Attitude",
+        16: "Guerrier",
+        18: "Super Héros",
+        20: "Étoile Montante",
+        24: "Champion",
+        30: "Visionnaire",
+        36: "Maître",
+        42: "Sage",
+        48: "Légende",
+        60: "Titan",
+        72: "Mythique"
+    };
+
+    const badgeDetails = {
+        0.5: {
+            icon: "🌤️",
+            physiology: [
+                "L'insuline commence à baisser légèrement",
+                "Le processus digestif est encore actif",
+                "Le corps utilise le glucose récemment consommé"
+            ],
+            symptoms: [
+                "Sensation normale, pas de faim particulière",
+                "Énergie stable provenant du dernier repas",
+                "Peut-être une légère envie psychologique de grignoter"
+            ],
+            tips: [
+                "Buvez un grand verre d'eau pour bien démarrer",
+                "Occupez votre esprit avec une activité",
+                "Rappelez-vous pourquoi vous avez commencé ce jeûne"
+            ],
+            motivation: "C'est parti ! Les 30 premières minutes sont les plus faciles. Profitez de ce moment de calme digestif."
+        },
+        1: {
+            icon: "💧",
+            physiology: [
+                "L'insuline continue sa descente progressive",
+                "Le système digestif ralentit son activité",
+                "Le foie commence à puiser dans ses réserves de glycogène"
+            ],
+            symptoms: [
+                "Possible sensation de légère faim",
+                "Bouche légèrement sèche",
+                "Énergie encore stable"
+            ],
+            tips: [
+                "Buvez de l'eau régulièrement (2-3 verres par heure)",
+                "Une tisane chaude peut aider à calmer la faim",
+                "Évitez de penser à la nourriture, occupez-vous"
+            ],
+            motivation: "Votre corps commence déjà à s'adapter ! L'hydratation est votre meilleure alliée."
+        },
+        2: {
+            icon: "🌿",
+            physiology: [
+                "Insuline revenue à un niveau basal",
+                "Digestion du dernier repas terminée",
+                "Le glucagon commence à augmenter"
+            ],
+            symptoms: [
+                "Ventre qui gargouille (normal !)",
+                "Sensation de légèreté",
+                "Possible petite baisse d'énergie"
+            ],
+            tips: [
+                "C'est le moment idéal pour une petite marche",
+                "Respirez profondément, la faim va passer",
+                "Ajoutez une pincée de sel à votre eau si besoin"
+            ],
+            motivation: "Bravo ! Votre système digestif entre en mode repos. C'est le début des bienfaits !"
+        },
+        4: {
+            icon: "🌱",
+            physiology: [
+                "Transition du métabolisme glucidique vers lipidique",
+                "Hormone de croissance en légère hausse",
+                "Glycémie stable grâce au glucagon"
+            ],
+            symptoms: [
+                "Vagues de faim qui vont et viennent",
+                "Possible léger mal de tête",
+                "Sensation de froid possible"
+            ],
+            tips: [
+                "Les vagues de faim durent 20 minutes max, tenez bon !",
+                "Buvez de l'eau avec électrolytes (sel, magnésium)",
+                "Couvrez-vous bien si vous avez froid"
+            ],
+            motivation: "4 heures ! Votre corps change de carburant. C'est un moment clé, restez fort(e) !"
+        },
+        6: {
+            icon: "🔋",
+            physiology: [
+                "Glycogène hépatique à 50%",
+                "Début de la néoglucogenèse",
+                "Augmentation de la noradrénaline"
+            ],
+            symptoms: [
+                "Faim plus prononcée (c'est le pic !)",
+                "Possible irritabilité",
+                "Concentration qui peut fluctuer"
+            ],
+            tips: [
+                "C'est souvent le moment le plus dur, courage !",
+                "Prenez une douche ou un bain pour vous détendre",
+                "Écoutez de la musique apaisante"
+            ],
+            motivation: "Le pic de difficulté ! Après ça devient plus facile. Votre corps économise son énergie."
+        },
+        8: {
+            icon: "🔥",
+            physiology: [
+                "Glycogène hépatique presque épuisé",
+                "Lipolyse (combustion des graisses) active",
+                "Premiers corps cétoniques détectables"
+            ],
+            symptoms: [
+                "Faim qui commence à diminuer (!)",
+                "Haleine légèrement différente",
+                "Regain d'énergie possible"
+            ],
+            tips: [
+                "Célébrez ! Le plus dur est derrière vous",
+                "Continuez l'hydratation avec électrolytes",
+                "Activité légère recommandée (yoga, marche)"
+            ],
+            motivation: "8 heures ! Vous brûlez maintenant vos graisses. Le mode survie ancestral s'active !"
+        },
+        10: {
+            icon: "💪",
+            physiology: [
+                "Production stable de corps cétoniques",
+                "Autophagie cellulaire qui démarre doucement",
+                "Inflammation systémique en baisse"
+            ],
+            symptoms: [
+                "Clarté mentale qui s'améliore",
+                "Faim beaucoup plus gérable",
+                "Possible euphorie légère"
+            ],
+            tips: [
+                "Profitez de cette clarté pour des tâches intellectuelles",
+                "Évitez les efforts physiques intenses",
+                "Méditez pour amplifier les bienfaits"
+            ],
+            motivation: "La force mentale prend le dessus ! Votre esprit devient plus clair et focus."
+        },
+        12: {
+            icon: "⚡",
+            physiology: [
+                "Entrée en cétose nutritionnelle",
+                "Autophagie cellulaire active",
+                "Hormone de croissance significativement élevée"
+            ],
+            symptoms: [
+                "Énergie stable et claire",
+                "Faim très diminuée",
+                "Sensation de légèreté"
+            ],
+            tips: [
+                "Parfait pour des activités créatives",
+                "Hydratation toujours importante",
+                "Écoutez votre corps, reposez-vous si besoin"
+            ],
+            motivation: "12 heures ! Cétose activée ! Votre cerveau carbure aux cétones. Performance optimale !"
+        },
+        14: {
+            icon: "🧘",
+            physiology: [
+                "Cétose bien établie",
+                "Réduction significative de l'inflammation",
+                "Sensibilité à l'insuline améliorée"
+            ],
+            symptoms: [
+                "Calme mental profond",
+                "Faim quasi absente",
+                "Sensation de paix intérieure"
+            ],
+            tips: [
+                "Moment idéal pour la méditation",
+                "Journaling pour capturer vos pensées",
+                "Profitez de ce calme pour vous recentrer"
+            ],
+            motivation: "L'état zen ! Votre corps et esprit sont en harmonie. Savourez cette sérénité."
+        },
+        16: {
+            icon: "✨",
+            physiology: [
+                "Autophagie significative en cours",
+                "BDNF (facteur neurotrophique) en hausse",
+                "Régénération cellulaire active"
+            ],
+            symptoms: [
+                "Énergie élevée et stable",
+                "Créativité accrue",
+                "Sentiment de puissance"
+            ],
+            tips: [
+                "Profitez pour des projets créatifs",
+                "Restez humble face à cette énergie",
+                "Continuez l'hydratation régulière"
+            ],
+            motivation: "16 heures ! L'autophagie nettoie vos cellules. Vous êtes un(e) guerrier(e) !"
+        },
+        18: {
+            icon: "🦸",
+            physiology: [
+                "Pic de production d'hormone de croissance",
+                "Autophagie en pleine action",
+                "Mitochondries en mode régénération"
+            ],
+            symptoms: [
+                "Sensation de super-pouvoirs",
+                "Acuité mentale maximale",
+                "Peu ou pas de faim"
+            ],
+            tips: [
+                "Canalisez cette énergie positivement",
+                "Évitez de trop en faire physiquement",
+                "Appréciez cette sensation unique"
+            ],
+            motivation: "Mode super-héros activé ! Votre corps se régénère à vitesse grand V !"
+        },
+        20: {
+            icon: "💫",
+            physiology: [
+                "Autophagie proche de son maximum",
+                "Cellules souches activées",
+                "Système immunitaire en pleine régénération"
+            ],
+            symptoms: [
+                "État de flow mental",
+                "Corps léger et agile",
+                "Sommeil potentiellement perturbé"
+            ],
+            tips: [
+                "Si insomnie, méditez ou lisez",
+                "Tisanes calmantes le soir",
+                "Célébrez ce milestone incroyable !"
+            ],
+            motivation: "20 heures ! Vous brillez comme une étoile. Excellence métabolique atteinte !"
+        },
+        24: {
+            icon: "🎯",
+            physiology: [
+                "Autophagie maximale",
+                "Régénération immunitaire complète",
+                "IGF-1 au plus bas (anti-âge)"
+            ],
+            symptoms: [
+                "Clarté mentale exceptionnelle",
+                "Énergie paradoxalement élevée",
+                "Sensation de renouveau"
+            ],
+            tips: [
+                "Planifiez votre reprise alimentaire",
+                "Restez actif mais sans excès",
+                "Savourez cette victoire !"
+            ],
+            motivation: "24 heures ! Champion(ne) ! L'autophagie fait le grand ménage. Régénération totale !"
+        },
+        30: {
+            icon: "🔮",
+            physiology: [
+                "Autophagie intense et soutenue",
+                "Production accrue de neurones (neurogenèse)",
+                "Réparation ADN activée",
+                "Diminution marquée des marqueurs inflammatoires"
+            ],
+            symptoms: [
+                "Vision mentale ultra-claire",
+                "Sensation de flotter",
+                "Diminution du besoin de sommeil",
+                "Hypersensibilité sensorielle"
+            ],
+            tips: [
+                "Méditez pour canaliser cette clarté",
+                "Évitez les environnements bruyants",
+                "Journaling pour capturer vos insights",
+                "Bains de sel d'Epsom pour les minéraux"
+            ],
+            motivation: "30 heures ! Visionnaire ! Votre cerveau crée de nouveaux neurones. La clarté mentale est extraordinaire !"
+        },
+        36: {
+            icon: "💎",
+            physiology: [
+                "Autophagie soutenue et profonde",
+                "Mitophagie (recyclage des mitochondries)",
+                "Production massive de cellules souches"
+            ],
+            symptoms: [
+                "État de conscience modifié",
+                "Peu de sensations physiques",
+                "Paix profonde"
+            ],
+            tips: [
+                "Surveillance médicale recommandée",
+                "Repos et méditation privilégiés",
+                "Écoutez attentivement votre corps"
+            ],
+            motivation: "36 heures ! Maîtrise absolue. Votre corps se reconstruit de l'intérieur !"
+        },
+        42: {
+            icon: "🌸",
+            physiology: [
+                "Renaissance cellulaire complète",
+                "Activation des gènes de longévité (FOXO)",
+                "Production maximale de BDNF (plasticité cérébrale)",
+                "Régénération du microbiome intestinal"
+            ],
+            symptoms: [
+                "État de grâce physique",
+                "Émotions profondes possibles",
+                "Sensation de renaissance",
+                "Peau visiblement plus claire"
+            ],
+            tips: [
+                "Permettez-vous de ressentir les émotions",
+                "Brossage à sec pour stimuler la lymphe",
+                "Respiration profonde régulière",
+                "Évitez tout stress inutile"
+            ],
+            motivation: "42 heures ! Sage ! Vos cellules renaissent littéralement. C'est une renaissance biologique !"
+        },
+        48: {
+            icon: "👑",
+            physiology: [
+                "Pic absolu d'autophagie",
+                "Renouvellement cellulaire maximal",
+                "Activation maximale des sirtuines (longévité)"
+            ],
+            symptoms: [
+                "État méditatif naturel",
+                "Détachement du physique",
+                "Énergie spirituelle élevée"
+            ],
+            tips: [
+                "Supervision médicale importante",
+                "Réintroduction alimentaire très douce",
+                "Vous êtes une légende vivante !"
+            ],
+            motivation: "48 heures ! Légende ! Le pic de régénération. Votre corps vous dit merci !"
+        },
+        60: {
+            icon: "🏔️",
+            physiology: [
+                "Renouvellement cellulaire massif",
+                "Système immunitaire totalement régénéré",
+                "Production record de cellules souches",
+                "Réinitialisation épigénétique profonde"
+            ],
+            symptoms: [
+                "Force intérieure inébranlable",
+                "Calme olympien",
+                "Perception du temps altérée",
+                "Sensation d'invincibilité"
+            ],
+            tips: [
+                "Supervision médicale essentielle",
+                "Mouvements doux uniquement (qi gong, stretching)",
+                "Écoute maximale de votre corps",
+                "Préparez minutieusement votre sortie de jeûne"
+            ],
+            motivation: "60 heures ! Titan ! Vous avez atteint un niveau de régénération extraordinaire. Force et honneur !"
+        },
+        72: {
+            icon: "🌟",
+            physiology: [
+                "Renouvellement immunitaire complet",
+                "Cellules souches au maximum",
+                "Reset métabolique total"
+            ],
+            symptoms: [
+                "État de transcendance",
+                "Corps en mode minimal",
+                "Conscience pure"
+            ],
+            tips: [
+                "Suivi médical obligatoire",
+                "Reprise ultra progressive",
+                "Vous avez atteint le sommet !"
+            ],
+            motivation: "72 heures ! Mythique ! Maîtrise totale du jeûne. Respect absolu !"
+        }
+    };
+
+    const phases = [
+        {
+            hours: 0,
+            name: "Phase Post-Prandiale",
+            description: "Digestion en cours",
+            benefits: ["Absorption des nutriments", "Pic d'insuline normal", "Sensation de satiété"],
+            color: "linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%)"
+        },
+        {
+            hours: 4,
+            name: "Transition Métabolique",
+            description: "Le corps change de carburant",
+            benefits: ["Glycémie qui se stabilise", "Insuline en baisse", "Glucagon en hausse"],
+            color: "linear-gradient(135deg, #aed581 0%, #9ccc65 100%)"
+        },
+        {
+            hours: 8,
+            name: "Glycogénolyse Active",
+            description: "Utilisation des réserves de glycogène",
+            benefits: ["Mobilisation du glycogène hépatique", "Hormone de croissance ↑", "Métabolisme qui s'adapte"],
+            color: "linear-gradient(135deg, #81c784 0%, #66bb6a 100%)"
+        },
+        {
+            hours: 12,
+            name: "Entrée en Cétose",
+            description: "Mode combustion des graisses activé !",
+            benefits: ["Production de cétones", "Lipolyse active", "Début d'autophagie légère", "Clarté mentale"],
+            color: "linear-gradient(135deg, #66bb6a 0%, #4caf50 100%)"
+        },
+        {
+            hours: 16,
+            name: "Cétose Établie",
+            description: "Votre corps brûle les graisses !",
+            benefits: ["Autophagie en progression", "BDNF ↑ (bon pour le cerveau)", "Inflammation ↓", "Énergie stable"],
+            color: "linear-gradient(135deg, #4caf50 0%, #43a047 100%)"
+        },
+        {
+            hours: 24,
+            name: "Autophagie Active",
+            description: "Nettoyage cellulaire en cours !",
+            benefits: ["Autophagie significative", "Renouvellement cellulaire", "Régénération immunitaire", "IGF-1 ↓"],
+            color: "linear-gradient(135deg, #43a047 0%, #388e3c 100%)"
+        },
+        {
+            hours: 36,
+            name: "Autophagie Renforcée",
+            description: "Régénération profonde",
+            benefits: ["Autophagie puissante", "Mitophagie active", "Cellules souches activées", "Anti-âge maximal"],
+            color: "linear-gradient(135deg, #388e3c 0%, #2e7d32 100%)"
+        },
+        {
+            hours: 48,
+            name: "Pic d'Autophagie",
+            description: "État de régénération maximale !",
+            benefits: ["Autophagie au maximum", "Renouvellement immunitaire complet", "Sensibilité insuline ++", "Sirtuines activées"],
+            color: "linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%)"
+        }
+    ];
+
+    const motivationalQuotes = [
+        "💪 Chaque minute vous rapproche de vos objectifs !",
+        "🔥 Votre métabolisme se transforme !",
+        "⭐ Vous êtes plus fort(e) que vos fringales !",
+        "🎯 Restez focus, l'autophagie approche !",
+        "💎 Votre corps vous remerciera !",
+        "🚀 La clarté mentale arrive bientôt !",
+        "🌟 Les fringales passent, les bienfaits restent !",
+        "💫 Votre corps se régénère minute par minute !",
+        "🏆 Vous êtes en train de réussir !",
+        "✨ L'autophagie est votre super-pouvoir !"
+    ];
+
+    function setDefaultDateTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        
+        document.getElementById('startDate').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+    }
+
+    // Fonctions de sauvegarde localStorage
+    function saveFastingData() {
+        if (!startTime || !targetDuration) return;
+        
+        const fastingData = {
+            startTime: startTime.getTime(),
+            targetDuration: targetDuration,
+            pausedTime: pausedTime,
+            isPaused: isPaused,
+            unlockedBadges: unlockedBadges,
+            milestoneShown: milestoneShown,
+            savedAt: new Date().getTime()
+        };
+        
+        localStorage.setItem('fastingTracker', JSON.stringify(fastingData));
+    }
+    
+    function loadSavedFasting() {
+        const saved = localStorage.getItem('fastingTracker');
+        if (!saved) return;
+        
+        try {
+            const data = JSON.parse(saved);
+            const now = new Date().getTime();
+            
+            // Vérifier que les données ne sont pas trop anciennes (plus de 7 jours)
+            if (now - data.savedAt > 7 * 24 * 60 * 60 * 1000) {
+                localStorage.removeItem('fastingTracker');
+                return;
+            }
+            
+            // Restaurer les données
+            startTime = new Date(data.startTime);
+            targetDuration = data.targetDuration;
+            pausedTime = data.pausedTime || 0;
+            isPaused = data.isPaused || false;
+            unlockedBadges = data.unlockedBadges || {};
+            milestoneShown = data.milestoneShown || {};
+            
+            // Calculer combien d'heures se sont écoulées
+            const elapsed = now - data.startTime - pausedTime;
+            const targetHours = targetDuration / 3600000;
+            
+            // Afficher l'interface de tracking
+            document.getElementById('setupSection').style.display = 'none';
+            document.getElementById('trackingSection').style.display = 'block';
+            
+            // Mettre à jour l'affichage de l'objectif
+            const endTime = new Date(startTime.getTime() + targetDuration);
+            document.getElementById('targetTime').textContent = `Objectif : ${targetHours}h - Fin le ${endTime.toLocaleDateString('fr-FR')} à ${endTime.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}`;
+            
+            // Restaurer les badges débloqués
+            Object.keys(unlockedBadges).forEach(hours => {
+                if (unlockedBadges[hours]) {
+                    const badge = document.getElementById(`badge-${hours}`);
+                    if (badge) {
+                        badge.classList.add('unlocked');
+                    }
+                }
+            });
+            
+            // Démarrer le timer
+            updateFasting();
+            fastingInterval = setInterval(updateFasting, 1000);
+            
+            // Mettre à jour le bouton pause si nécessaire
+            if (isPaused) {
+                const pauseBtn = document.querySelector('.btn-stop');
+                pauseBtn.textContent = "▶️ Reprendre";
+                pauseBtn.style.background = "#26a69a";
+            }
+            
+        } catch (error) {
+            console.error('Erreur lors du chargement des données:', error);
+            localStorage.removeItem('fastingTracker');
+        }
+    }
+    
+    function clearAllData() {
+        if (confirm("Êtes-vous sûr de vouloir effacer toutes les données sauvegardées ? Cette action est irréversible.")) {
+            localStorage.removeItem('fastingTracker');
+            location.reload(); // Recharger la page
+        }
+    }
+
+    window.onload = function() {
+        setDefaultDateTime();
+        loadSavedFasting();
+    };
+
+    function startFasting() {
+        const startDateInput = document.getElementById('startDate').value;
+        const targetHoursInput = document.getElementById('targetHours').value;
+
+        if (!startDateInput || !targetHoursInput) {
+            alert('Veuillez remplir tous les champs !');
+            return;
+        }
+
+        startTime = new Date(startDateInput);
+        targetDuration = parseInt(targetHoursInput) * 3600000; // Convert hours to milliseconds
+
+        document.getElementById('setupSection').style.display = 'none';
+        document.getElementById('trackingSection').style.display = 'block';
+        
+        const endTime = new Date(startTime.getTime() + targetDuration);
+        document.getElementById('targetTime').textContent = `Objectif : ${targetHoursInput}h - Fin le ${endTime.toLocaleDateString('fr-FR')} à ${endTime.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}`;
+
+        milestoneShown = {};
+        unlockedBadges = {};
+        resetBadges();
+        updateFasting();
+        fastingInterval = setInterval(updateFasting, 1000);
+        saveFastingData(); // Sauvegarder au démarrage
+    }
+
+    function resetBadges() {
+        const badges = document.querySelectorAll('.badge');
+        badges.forEach(badge => {
+            badge.classList.remove('unlocked', 'unlocking');
+        });
+        document.getElementById('badgesCount').textContent = '0/19';
+        document.getElementById('levelReached').textContent = '-';
+    }
+
+    function updateFasting() {
+        if (isPaused) return;
+
+        const now = new Date();
+        const elapsed = now - startTime - pausedTime;
+        
+        // Update timer display
+        const hours = Math.floor(elapsed / 3600000);
+        const minutes = Math.floor((elapsed % 3600000) / 60000);
+        const seconds = Math.floor((elapsed % 60000) / 1000);
+        
+        document.getElementById('timeElapsed').textContent = 
+            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+        // Update time remaining
+        const remaining = targetDuration - elapsed;
+        if (remaining > 0) {
+            const remainingHours = Math.floor(remaining / 3600000);
+            const remainingMinutes = Math.floor((remaining % 3600000) / 60000);
+            const remainingElement = document.getElementById('timeRemaining');
+            remainingElement.textContent = `⏳ Reste : ${remainingHours}h ${remainingMinutes}min`;
+            
+            // Change color based on remaining time
+            const remainingPercentage = (remaining / targetDuration) * 100;
+            if (remainingPercentage > 50) {
+                remainingElement.style.color = '#81c784'; // green
+            } else if (remainingPercentage > 20) {
+                remainingElement.style.color = '#ffb74d'; // orange
+            } else {
+                remainingElement.style.color = '#e57373'; // red
+            }
+        } else {
+            document.getElementById('timeRemaining').textContent = '✅ Objectif dépassé !';
+            document.getElementById('timeRemaining').style.color = '#4caf50';
+        }
+
+        // Update progress bar
+        const progress = Math.min((elapsed / targetDuration) * 100, 100);
+        document.getElementById('progressBar').style.width = `${progress}%`;
+        document.getElementById('progressPercentage').textContent = `${Math.round(progress)}%`;
+
+        // Update phase
+        const currentPhase = getCurrentPhase(hours);
+        updatePhaseDisplay(currentPhase);
+
+        // Check milestones
+        checkMilestones(hours + minutes / 60);
+
+        // Update motivation
+        if (seconds === 0) { // Change every minute
+            updateMotivation();
+        }
+
+        // Check if target reached
+        if (elapsed >= targetDuration && !milestoneShown.completed) {
+            completeFasting();
+            milestoneShown.completed = true;
+        }
+        
+        // Sauvegarder toutes les 10 secondes
+        if (seconds % 10 === 0) {
+            saveFastingData();
+        }
+    }
+
+    function getCurrentPhase(hours) {
+        for (let i = phases.length - 1; i >= 0; i--) {
+            if (hours >= phases[i].hours) {
+                return phases[i];
+            }
+        }
+        return phases[0];
+    }
+
+    function updatePhaseDisplay(phase) {
+        document.getElementById('phaseName').textContent = phase.name;
+        document.getElementById('phaseDescription').textContent = phase.description;
+        document.getElementById('phaseIndicator').style.background = phase.color;
+
+        const benefitsHtml = phase.benefits.map(benefit => 
+            `<div class="benefit-item">
+                <div class="benefit-icon">✓</div>
+                <span>${benefit}</span>
+            </div>`
+        ).join('');
+        
+        document.getElementById('currentBenefits').innerHTML = benefitsHtml;
+    }
+
+    function checkMilestones(hours) {
+        const milestones = [0.5, 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 30, 36, 42, 48, 60, 72];
+        let unlockedCount = 0;
+        let lastUnlockedLevel = '-';
+        
+        for (let milestone of milestones) {
+            if (hours >= milestone) {
+                unlockedCount++;
+                lastUnlockedLevel = badgeLevels[milestone];
+                
+                if (!unlockedBadges[milestone]) {
+                    unlockBadge(milestone);
+                    unlockedBadges[milestone] = true;
+                    showMilestone(milestone);
+                }
+            }
+        }
+        
+        document.getElementById('badgesCount').textContent = `${unlockedCount}/19`;
+        document.getElementById('levelReached').textContent = lastUnlockedLevel;
+    }
+
+    function unlockBadge(hours) {
+        const badge = document.getElementById(`badge-${hours}`);
+        if (badge && !badge.classList.contains('unlocked')) {
+            badge.classList.add('unlocking');
+            setTimeout(() => {
+                badge.classList.remove('unlocking');
+                badge.classList.add('unlocked');
+            }, 600);
+        }
+    }
+
+    function showMilestone(hours) {
+        const messages = {
+            0.5: "🎉 30 minutes ! C'est parti pour l'aventure !",
+            1: "💧 1 heure ! L'hydratation est votre alliée !",
+            2: "🌿 2 heures ! Digestion terminée !",
+            4: "🎉 4 heures ! Transition métabolique en cours !",
+            6: "🔋 6 heures ! Mode économie d'énergie !",
+            8: "💪 8 heures ! Le glycogène s'épuise !",
+            10: "💪 10 heures ! Force mentale activée !",
+            12: "🔥 12 heures ! Entrée en cétose !",
+            14: "🧘 14 heures ! État zen atteint !",
+            16: "⭐ 16 heures ! Autophagie qui démarre !",
+            18: "🦸 18 heures ! Super-pouvoirs débloqués !",
+            20: "💫 20 heures ! Excellence métabolique !",
+            24: "🏆 24 heures ! Autophagie active !",
+            30: "🔮 30 heures ! Vision claire et neurogenèse !",
+            36: "💎 36 heures ! Régénération profonde !",
+            42: "🌸 42 heures ! Renaissance cellulaire !",
+            48: "👑 48 heures ! Pic d'autophagie atteint !",
+            60: "🏔️ 60 heures ! Force du titan !",
+            72: "🌟 72 heures ! Maîtrise totale du jeûne !"
+        };
+
+        if (!messages[hours]) return;
+
+        const details = badgeDetails[hours];
+        const alert = document.getElementById('milestoneAlert');
+        document.getElementById('milestoneEmoji').textContent = details.icon;
+        document.getElementById('milestoneMessage').innerHTML = messages[hours];
+        
+        alert.style.display = 'block';
+        alert.classList.add('pulsing');
+        
+        setTimeout(() => {
+            alert.style.display = 'none';
+            alert.classList.remove('pulsing');
+        }, 4000);
+    }
+
+    function showBadgeDetails(hours) {
+        const badge = document.getElementById(`badge-${hours}`);
+        if (!badge.classList.contains('unlocked')) return;
+        
+        const details = badgeDetails[hours];
+        if (!details) return;
+        
+        const modal = document.getElementById('badgeModal');
+        document.getElementById('modalBadgeIcon').textContent = details.icon;
+        document.getElementById('modalBadgeTitle').textContent = badgeLevels[hours];
+        document.getElementById('modalBadgeTime').textContent = hours < 1 ? `${hours * 60} minutes` : `${hours} heure${hours > 1 ? 's' : ''}`;
+        
+        // Physiologie
+        const physiologyHtml = details.physiology.map(item => `<li>${item}</li>`).join('');
+        document.getElementById('modalPhysiology').innerHTML = `<ul>${physiologyHtml}</ul>`;
+        
+        // Symptômes
+        const symptomsHtml = details.symptoms.map(item => `<li>${item}</li>`).join('');
+        document.getElementById('modalSymptoms').innerHTML = `<ul>${symptomsHtml}</ul>`;
+        
+        // Astuces
+        const tipsHtml = details.tips.map(item => `<li>${item}</li>`).join('');
+        document.getElementById('modalTips').innerHTML = `<ul>${tipsHtml}</ul>`;
+        
+        // Motivation
+        document.getElementById('modalMotivation').textContent = details.motivation;
+        
+        modal.style.display = 'flex';
+    }
+
+    function closeBadgeModal(event) {
+        // Si event existe et que le clic est sur le contenu, ne pas fermer
+        if (event && event.target.classList && event.target.classList.contains('badge-modal-content')) {
+            return;
+        }
+        document.getElementById('badgeModal').style.display = 'none';
+    }
+
+    function updateMotivation() {
+        const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+        document.getElementById('motivationText').textContent = randomQuote;
+    }
+
+    function pauseFasting() {
+        const btn = event.target;
+        if (!isPaused) {
+            isPaused = true;
+            pausedTime = new Date() - startTime - pausedTime;
+            btn.textContent = "▶️ Reprendre";
+            btn.style.background = "#26a69a";
+        } else {
+            isPaused = false;
+            startTime = new Date() - pausedTime;
+            pausedTime = 0;
+            btn.textContent = "⏸️ Pause";
+            btn.style.background = "#ef5350";
+        }
+        saveFastingData(); // Sauvegarder après pause/reprise
+    }
+
+    function resetFasting() {
+        if (confirm("Êtes-vous sûr de vouloir réinitialiser votre jeûne ?")) {
+            clearInterval(fastingInterval);
+            document.getElementById('setupSection').style.display = 'block';
+            document.getElementById('trackingSection').style.display = 'none';
+            setDefaultDateTime();
+            document.getElementById('targetHours').value = '';
+            unlockedBadges = {};
+            milestoneShown = {};
+            localStorage.removeItem('fastingTracker'); // Effacer les données sauvegardées
+        }
+    }
+
+    function completeFasting() {
+        clearInterval(fastingInterval);
+        const alert = document.getElementById('milestoneAlert');
+        document.getElementById('milestoneEmoji').textContent = "🎊";
+        document.getElementById('milestoneMessage').innerHTML = "FÉLICITATIONS !<br>Objectif atteint !<br>Vous êtes un(e) champion(ne) !";
+        alert.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Tracker Jeûne">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🌿</text></svg>">
+    <link rel="manifest" href="./manifest.json">
+    <title>Tracker de Jeûne - Votre Compagnon Autophagie</title>
+    <meta name="description" content="Application web progressive pour suivre vos jeûnes intermittents avec badges motivants et informations physiologiques détaillées.">
+    <meta name="keywords" content="jeûne intermittent, autophagie, santé, tracker, badges, motivation">
+    
+    <!-- Redirection vers le fichier principal -->
+    <script>
+        window.location.href = './fasting_tracking_app.html';
+    </script>
+    
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            color: white;
+            text-align: center;
+        }
+        .loading {
+            font-size: 24px;
+            font-weight: 300;
+        }
+        .emoji {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="emoji">🌿</div>
+        <div class="loading">Chargement du Tracker de Jeûne...</div>
+    </div>
+    
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=./fasting_tracking_app.html">
+    </noscript>
+</body>
+</html>
