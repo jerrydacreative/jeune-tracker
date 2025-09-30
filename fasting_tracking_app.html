@@ -875,502 +875,369 @@
     };
 
     const badgeDetails = {
-        0.5: {
-            icon: "🌤️",
-            physiology: [
-                "Digestion encore en cours du dernier repas",
-                "Insuline encore élevée depuis le repas",
-                "Glucose sanguin normal, corps en mode postprandial"
-            ],
-            symptoms: [
-                "Sensation normale, pas de faim",
-                "Énergie stable",
-                "Possible envie psychologique de grignoter par habitude"
-            ],
-            tips: [
-                "💧 Buvez un grand verre d'eau pour bien démarrer",
-                "📱 Mettez une alarme pour boire toutes les heures",
-                "🚶 Planifiez une activité pour dans 1-2h (marche, lecture)",
-                "📝 Notez votre objectif sur un papier visible",
-                "🧘 3 respirations profondes si l'envie de grignoter arrive"
-            ],
-            motivation: "Bon départ ! La digestion de votre dernier repas se termine tranquillement."
-        },
-        1: {
-            icon: "💧",
-            physiology: [
-                "Digestion du dernier repas se termine",
-                "Insuline commence sa descente lente vers les niveaux de base",
-                "Utilisation du glucose encore présent dans le sang"
-            ],
-            symptoms: [
-                "Pas encore de vraie faim",
-                "Énergie encore stable",
-                "Possible soif"
-            ],
-            tips: [
-                "💧 2-3 verres d'eau dans l'heure (température ambiante)",
-                "☕ Une tisane chaude peut créer une sensation de satiété",
-                "🎯 Changez de pièce si vous pensez trop à la nourriture",
-                "📺 Évitez les émissions culinaires et réseaux sociaux food",
-                "🧹 C'est le moment idéal pour une petite tâche ménagère",
-                "🌡️ Si soif intense : ajoutez une pincée de sel rose"
-            ],
-            motivation: "Première heure ! Votre corps termine la digestion et se prépare au changement."
-        },
-        2: {
-            icon: "🌿",
-            physiology: [
-                "Digestion complètement terminée",
-                "Insuline retourne progressivement au niveau de base",
-                "Début de mobilisation légère du glucose hépatique"
-            ],
-            symptoms: [
-                "Premiers signaux de faim possible",
-                "Ventre qui peut gargouiller",
-                "Sensation de légèreté digestive"
-            ],
-            tips: [
-                "🚶 Marche de 10-15 min pour activer la circulation",
-                "💧 Eau tiède avec citron (sans sucre) pour la variété",
-                "🎵 Playlist énergisante pour booster le moral",
-                "🌬️ Si gargouillements : respirez profondément par le ventre",
-                "📞 Appelez un ami qui vous soutient dans votre démarche",
-                "🏠 Éloignez-vous de la cuisine si possible",
-                "⏰ Rappelez-vous : la faim vient par vagues de 20 min"
-            ],
-            motivation: "2 heures ! La digestion est finie, votre corps commence sa transition."
-        },
-        4: {
-            icon: "🌱",
-            physiology: [
-                "Mobilisation accrue du glycogène hépatique",
-                "Légère augmentation du glucagon",
-                "Maintien de la glycémie par le foie"
-            ],
-            symptoms: [
-                "Faim plus marquée et en vagues",
-                "Possible légère irritabilité",
-                "Énergie qui peut fluctuer"
-            ],
-            tips: [
-                "⏱️ Chronométrez la faim : elle passe en 15-20 min !",
-                "🧂 Eau + pincée sel rose + citron = électrolytes naturels",
-                "🛀 Douche tiède ou bain pour changer les sensations",
-                "🎮 Jeu vidéo, puzzle ou activité qui demande concentration",
-                "🧊 Si froid : pull chaud et chaussettes (normal en jeûne)",
-                "🎬 Film captivant pour passer le cap difficile",
-                "💭 Visualisez vos cellules qui commencent leur nettoyage",
-                "📱 Application de méditation guidée (5-10 min)"
-            ],
-            motivation: "4 heures ! Le vrai jeûne commence. Votre foie prend le relais énergétique."
-        },
-        6: {
-            icon: "🔋",
-            physiology: [
-                "Glycogène hépatique en diminution (environ 70% restant)",
-                "Début léger de néoglucogenèse",
-                "Adaptation hormonale en cours"
-            ],
-            symptoms: [
-                "Pic de faim souvent vers 6-8h",
-                "Possible fatigue légère",
-                "Parfois petite baisse de concentration"
-            ],
-            tips: [
-                "🔴 PIC DE DIFFICULTÉ : c'est le plus dur, après ça va mieux !",
-                "☕ Tisanes chaudes : camomille, menthe, gingembre",
-                "🛋️ Repos obligatoire : canapé, lecture légère, podcast",
-                "🚫 ÉVITEZ : sport intense, décisions importantes, conflits",
-                "💊 Si mal de tête : eau + sel + magnésium",
-                "🌡️ Bouillotte sur le ventre peut calmer les crampes",
-                "🎧 Musique douce ou bruits blancs apaisants",
-                "💪 Répétez : \"C'est temporaire, je suis plus fort(e) que ma faim\"",
-                "⏰ Dans 2h, vous vous sentirez BEAUCOUP mieux !"
-            ],
-            motivation: "6 heures ! Phase critique passée, votre corps s'adapte et économise l'énergie."
-        },
-        8: {
-            icon: "🔥",
-            physiology: [
-                "Glycogène hépatique significativement diminué",
-                "Augmentation de la lipolyse (libération des graisses)",
-                "Très légère production de corps cétoniques"
-            ],
-            symptoms: [
-                "Faim qui peut commencer à s'atténuer",
-                "Énergie qui se stabilise",
-                "Possible haleine légèrement différente"
-            ],
-            tips: [
-                "🎉 FÉLICITATIONS : le plus dur est souvent passé !",
-                "💧 Eau + sel + potassium (avocat en reprise)",
-                "🧘 Yoga doux ou étirements légers bienvenus",
-                "🚶 Marche lente de 20-30 min si énergie",
-                "🌞 Exposition au soleil 10-15 min (vitamine D)",
-                "📚 Parfait pour lire ou étudier (concentration ↑)",
-                "🚿 Douche froide finale = boost d'énergie",
-                "💭 Notez comment vous vous sentez (journal de jeûne)"
-            ],
-            motivation: "8 heures ! Transition importante : votre corps commence à mobiliser les graisses."
-        },
-        10: {
-            icon: "💪",
-            physiology: [
-                "Production croissante de corps cétoniques",
-                "Lipolyse bien établie",
-                "Adaptation métabolique en cours"
-            ],
-            symptoms: [
-                "Faim souvent diminuée",
-                "Énergie plus stable",
-                "Clarté mentale qui peut s'améliorer"
-            ],
-            tips: [
-                "💪 La force mentale prend le dessus sur la faim",
-                "🧂 Électrolytes : 1/4 cuillère sel dans 500ml d'eau",
-                "🎯 Productivité mentale souvent excellente maintenant",
-                "📝 To-do list : profitez de cette clarté mentale",
-                "🚫 Évitez : CrossFit, HIIT, musculation lourde",
-                "✅ Autorisé : marche, yoga, natation douce",
-                "🛏️ Si fatigue : micro-sieste de 20 min max",
-                "🎵 Musique motivante pour garder le moral au top"
-            ],
-            motivation: "10 heures ! Votre corps s'adapte bien au jeûne, la force mentale se développe."
-        },
-        12: {
-            icon: "⚡",
-            physiology: [
-                "Début possible de cétose légère (variable selon les personnes)",
-                "Production notable de corps cétoniques",
-                "Commencemet de l'élévation de l'hormone de croissance"
-            ],
-            symptoms: [
-                "Faim généralement bien contrôlée",
-                "Énergie mentale souvent améliorée",
-                "Possible sensation de légèreté"
-            ],
-            tips: [
-                "⚡ Début de la magie métabolique !",
-                "🧠 Cerveau ultra-performant : taclez vos projets complexes",
-                "💧 2-3L d'eau minimum dans la journée",
-                "🧪 Haleine cétone = signe que ça fonctionne !",
-                "🍵 Thé vert ou café noir autorisés (sans sucre)",
-                "📊 Travail intellectuel optimal à ce stade",
-                "🏃‍♀️ Cardio léger possible si vous vous sentez bien",
-                "😴 Écoutez votre corps : repos si besoin",
-                "🎯 Vous avez dépassé le jeûne intermittent classique !"
-            ],
-            motivation: "12 heures ! Seuil important franchi, votre métabolisme bascule vers les graisses."
-        },
-        14: {
-            icon: "🧘",
-            physiology: [
-                "Cétose s'établit progressivement",
-                "Hormone de croissance en augmentation",
-                "Stabilisation métabolique"
-            ],
-            symptoms: [
-                "Faim souvent très diminuée",
-                "Clarté mentale stable",
-                "Sensation de bien-être"
-            ],
-            tips: [
-                "🧘 État zen : méditez 10-20 min pour amplifier",
-                "📖 Lecture spirituelle ou développement personnel",
-                "🎨 Activités créatives favorisées (dessin, écriture)",
-                "🌿 Promenade en nature pour connexion profonde",
-                "💆 Auto-massage ou acupression",
-                "🔇 Environnement calme recommandé",
-                "📿 Pratiques spirituelles si c'est votre truc",
-                "💭 Introspection : qu'avez-vous appris sur vous ?",
-                "🌊 Bain de sel d'Epsom pour détente musculaire"
-            ],
-            motivation: "14 heures ! État zen atteint, votre corps trouve son rythme de jeûne."
-        },
-        16: {
-            icon: "✨",
-            physiology: [
-                "Début de l'autophagie cellulaire légère",
-                "Cétose bien installée chez la plupart",
-                "Hormone de croissance élevée"
-            ],
-            symptoms: [
-                "Énergie mentale souvent excellente",
-                "Faim généralement absente",
-                "Sensation de clarté"
-            ],
-            tips: [
-                "✨ AUTOPHAGIE DÉMARRE : vos cellules se nettoient !",
-                "🎯 Projets importants : c'est LE moment",
-                "🧠 Mémoire et focus au maximum",
-                "☕ Café noir permis pour booster encore plus",
-                "🚶‍♂️ Marche méditative de 30-45 min idéale",
-                "📸 Photo avant/après pour voir les changements",
-                "💡 Brainstorming : idées créatives affluent",
-                "🎪 Évitez les environnements stressants",
-                "🏆 Félicitez-vous : peu de gens arrivent à 16h !",
-                "🌟 Visualisez vos cellules qui se régénèrent"
-            ],
-            motivation: "16 heures ! Seuil magique : l'autophagie démarre, vous êtes un(e) guerrier(e) !"
-        },
-        18: {
-            icon: "🦸",
-            physiology: [
-                "Autophagie cellulaire active",
-                "Hormone de croissance au pic",
-                "Cétose profonde chez la plupart"
-            ],
-            symptoms: [
-                "Énergie stable et soutenue",
-                "Clarté mentale remarquable",
-                "Absence totale de faim"
-            ],
-            tips: [
-                "🦸 Mode super-héros activé !",
-                "🔬 Autophagie en pleine action : régénération cellulaire",
-                "💎 Cette clarté mentale est précieuse, utilisez-la",
-                "🏃‍♂️ Sport doux : yoga, qi gong, marche rapide",
-                "🚫 Évitez : poids lourds, sprints, efforts violents",
-                "🧊 Douche froide = boost hormone de croissance",
-                "📚 Apprentissage optimisé : mémorisez facilement",
-                "🎭 Émotions intenses possibles : c'est normal",
-                "💧 Électrolytes essentiels maintenant",
-                "🌃 Si insomnie : méditation ou lecture calme"
-            ],
-            motivation: "18 heures ! Super-héros activé : autophagie en marche, régénération lancée !"
-        },
-        20: {
-            icon: "💫",
-            physiology: [
-                "Autophagie bien établie",
-                "Processus de nettoyage cellulaire actif",
-                "Optimisation métabolique avancée"
-            ],
-            symptoms: [
-                "Énergie mentale exceptionnelle",
-                "Sensation de légèreté corporelle",
-                "Sommeil parfois différent"
-            ],
-            tips: [
-                "💫 20h = territoire des champions !",
-                "🛏️ Sommeil perturbé ? Normal avec l'énergie élevée",
-                "🍵 Tisanes : passiflore, valériane, camomille",
-                "📝 Journal de gratitude : notez 3 victoires du jour",
-                "🧘‍♀️ Méditation du soir 15-30 min recommandée",
-                "🌙 Évitez les écrans 1h avant de dormir",
-                "🎶 Musique 432Hz ou sons binauraux pour dormir",
-                "💊 Magnésium glycinate peut aider au sommeil",
-                "🏅 Partagez votre exploit avec quelqu'un",
-                "🔋 Demain, vous serez une nouvelle personne !"
-            ],
-            motivation: "20 heures ! Étoile montante : votre corps excelle dans l'art du jeûne !"
-        },
-        24: {
-            icon: "🎯",
-            physiology: [
-                "Autophagie pleinement active",
-                "IGF-1 significativement diminué",
-                "Processus de régénération cellulaire intense"
-            ],
-            symptoms: [
-                "Clarté mentale souvent remarquable",
-                "Énergie stable malgré le jeûne",
-                "Sensation de transformation"
-            ],
-            tips: [
-                "🎯 24H ACCOMPLI ! Bravo champion(ne) !",
-                "🍲 Planifiez votre reprise : bouillon, légumes cuits",
-                "⚠️ PAS de repas lourd en reprise (danger)",
-                "🥑 Reprise idéale : bouillon → légumes → protéines",
-                "📸 Photo souvenir de ce moment historique",
-                "💪 L'autophagie bat son plein actuellement",
-                "🚶 Marche de victoire de 30 min",
-                "📊 Notez tous les bienfaits ressentis",
-                "🎉 Partagez avec votre communauté jeûne",
-                "🔄 Planifiez votre prochain jeûne",
-                "⭐ Vous faites partie du top 5% !"
-            ],
-            motivation: "24 heures ! Champion ! L'autophagie travaille à plein régime !"
-        },
-        30: {
-            icon: "🔮",
-            physiology: [
-                "Autophagie soutenue et profonde",
-                "BDNF (facteur neurotrophique) élevé",
-                "Processus anti-inflammatoires actifs",
-                "Réparation cellulaire optimisée"
-            ],
-            symptoms: [
-                "Clarté mentale souvent exceptionnelle",
-                "Énergie mentale stable",
-                "Possible hypersensibilité",
-                "Sommeil parfois modifié"
-            ],
-            tips: [
-                "🔮 30h = Territoire inexploré pour la plupart !",
-                "🧠 BDNF élevé : votre cerveau se régénère",
-                "💊 Électrolytes OBLIGATOIRES : Na, K, Mg",
-                "🧘‍♂️ Méditation profonde 30+ min recommandée",
-                "📔 Journaling détaillé de vos sensations",
-                "🌡️ Surveillez : tension, pouls, température",
-                "🛀 Bain de sel d'Epsom + bicarbonate",
-                "🎨 Créativité au max : dessinez, écrivez",
-                "👥 Évitez les conflits et stress",
-                "🏥 Numéro médecin à portée si besoin",
-                "✨ Vous vivez quelque chose d'extraordinaire"
-            ],
-            motivation: "30 heures ! Visionnaire : votre cerveau baigne dans le BDNF régénérateur !"
-        },
-        36: {
-            icon: "💎",
-            physiology: [
-                "Autophagie soutenue et profonde",
-                "Mitophagie (recyclage des mitochondries)",
-                "Production massive de cellules souches"
-            ],
-            symptoms: [
-                "État de conscience modifié",
-                "Peu de sensations physiques",
-                "Paix profonde"
-            ],
-            tips: [
-                "💎 36h = Élite du jeûne thérapeutique",
-                "🏥 Surveillance médicale fortement recommandée",
-                "🔬 Mitophagie : vos mitochondries se renouvellent",
-                "🧬 Expression génétique optimisée pour longévité",
-                "💧 3-4L eau + électrolytes complets par jour",
-                "🛌 Repos OBLIGATOIRE : pas d'efforts",
-                "🧘 États méditatifs profonds naturels",
-                "📱 Limitez les stimulations (écrans, bruits)",
-                "🌿 Contact nature si possible (ancrage)",
-                "🩺 Vérifiez tension et glycémie si possible",
-                "🍵 Bouillon d'os permis si besoin",
-                "🏆 Vous êtes dans le top 1% mondial !"
-            ],
-            motivation: "36 heures ! Maîtrise absolue. Votre corps se reconstruit de l'intérieur !"
-        },
-        42: {
-            icon: "🌸",
-            physiology: [
-                "Autophagie prolongée et efficace",
-                "Activation des voies de longévité (sirtuines, FOXO)",
-                "BDNF maintenu à niveau élevé",
-                "Renouvellement cellulaire accéléré"
-            ],
-            symptoms: [
-                "Sensation de bien-être profond",
-                "Éventuelles émotions intensifiées",
-                "Sentiment de renouveau",
-                "Peau potentiellement améliorée"
-            ],
-            tips: [
-                "🌸 42h = Renaissance cellulaire profonde",
-                "🎭 Émotions intenses = nettoyage émotionnel",
-                "😭 Pleurer est OK et même thérapeutique",
-                "🤲 Brossage à sec doux pour la lymphe",
-                "🫁 Respiration Wim Hof ou cohérence cardiaque",
-                "🧪 Sirtuines et FOXO activés (anti-âge)",
-                "📿 Pratiques spirituelles amplifiées",
-                "🎵 Sons sacrés, mantras, fréquences",
-                "💆 Massage lymphatique facial",
-                "🌡️ Alternance chaud/froid si toléré",
-                "📝 Testament émotionnel : libérez par écrit",
-                "💫 Transformation profonde en cours"
-            ],
-            motivation: "42 heures ! Sage : renaissance cellulaire profonde en cours !"
-        },
-        48: {
-            icon: "👑",
-            physiology: [
-                "Pic absolu d'autophagie",
-                "Renouvellement cellulaire maximal",
-                "Activation maximale des sirtuines (longévité)"
-            ],
-            symptoms: [
-                "État méditatif naturel",
-                "Détachement du physique",
-                "Énergie spirituelle élevée"
-            ],
-            tips: [
-                "👑 48H = PIC ABSOLU D'AUTOPHAGIE !",
-                "🏥 SUPERVISION MÉDICALE INDISPENSABLE",
-                "🍲 Planifiez reprise sur 2-3 jours minimum",
-                "Day 1 : Bouillon, eau de coco, jus dilués",
-                "Day 2 : Légumes cuits, fruits doux",
-                "Day 3 : Protéines légères, bonnes graisses",
-                "⚠️ DANGER : reprise brutale = syndrome de réalimentation",
-                "🧬 Vos cellules souches sont au maximum",
-                "🎯 Notez TOUT : c'est de la data en or",
-                "🏅 Prenez conscience de votre exploit",
-                "👨‍⚕️ Check-up sanguin recommandé post-jeûne",
-                "🔮 Vous avez transformé votre biologie"
-            ],
-            motivation: "48 heures ! Légende ! Le pic de régénération. Votre corps vous dit merci !"
-        },
-        60: {
-            icon: "🏔️",
-            physiology: [
-                "Autophagie soutenue de très longue durée",
-                "Régénération immunitaire avancée",
-                "Cellules souches mobilisées",
-                "Adaptations métaboliques profondes"
-            ],
-            symptoms: [
-                "Détachement des sensations physiques",
-                "Calme mental profond",
-                "Perception modifiée",
-                "Sensation de transcendance"
-            ],
-            tips: [
-                "🏔️ 60H = EXPLOIT TITANESQUE !",
-                "🚨 MÉDECIN OBLIGATOIRE - PAS D'EXCEPTION",
-                "🩺 Monitoring : tension, glycémie, cétones",
-                "💉 Analyses sanguines avant reprise",
-                "🧂 Électrolytes pro : Na, K, Mg, Ca, P",
-                "🛏️ Repos TOTAL : zéro effort physique",
-                "🧘‍♂️ Méditation = seule activité conseillée",
-                "📱 Quelqu'un doit pouvoir vous joindre 24/7",
-                "🍲 Reprise sur 4-5 jours MINIMUM",
-                "⚡ Micro-nutriments essentiels en reprise",
-                "🏥 Hôpital identifié au cas où",
-                "👑 0.1% de la population arrive ici",
-                "🌟 Régénération cellulaire maximale atteinte"
-            ],
-            motivation: "60 heures ! Titan : niveau de maîtrise extraordinaire atteint !"
-        },
-        72: {
-            icon: "🌟",
-            physiology: [
-                "Renouvellement immunitaire complet",
-                "Cellules souches au maximum",
-                "Reset métabolique total"
-            ],
-            symptoms: [
-                "État de transcendance",
-                "Corps en mode minimal",
-                "Conscience pure"
-            ],
-            tips: [
-                "🌟 72H = MYTHIQUE ! RESPECT ABSOLU !",
-                "🚑 ÉQUIPE MÉDICALE INDISPENSABLE",
-                "🔴 DANGER MORTEL si reprise mal gérée",
-                "📊 Protocole médical de réalimentation",
-                "🩸 Bilan sanguin complet obligatoire",
-                "💊 Suppléments : B1, phosphates, Mg++",
-                "📈 Monitoring continu des constantes",
-                "🍲 Reprise sur 7 jours minimum :",
-                "J1-2 : Liquides clairs uniquement",
-                "J3-4 : Bouillons, jus dilués",
-                "J5-6 : Légumes cuits, fruits",
-                "J7+ : Protéines progressivement",
-                "🏆 Vous êtes au panthéon du jeûne",
-                "🧬 Reset biologique complet accompli",
-                "📖 Documentez pour la science !"
-            ],
-            motivation: "72 heures ! Mythique ! Maîtrise totale du jeûne. Respect absolu !"
-        }
-    };
+  0.5: {
+    icon: "🌤️",
+    physiology: [
+      "Ton repas est encore en digestion",
+      "Ton énergie vient du glucose circulant",
+      "Ton insuline est encore haute et travaille"
+    ],
+    symptoms: [
+      "Pas de faim particulière",
+      "Énergie stable",
+      "Envie de grignoter par habitude"
+    ],
+    tips: [
+      "💧 Bois un grand verre d’eau",
+      "🚶 Bouge un peu pour aider ta digestion",
+      "📝 Note ton objectif du jour"
+    ],
+    motivation: "C’est le coup d’envoi ! Ton corps est encore en phase post-repas."
+  },
+  1: {
+    icon: "💧",
+    physiology: [
+      "La digestion touche à sa fin",
+      "L’insuline commence à redescendre",
+      "Ton foie régule doucement ta glycémie"
+    ],
+    symptoms: [
+      "Pas de faim notable",
+      "Énergie calme et stable",
+      "Soif légère possible"
+    ],
+    tips: [
+      "☕ Bois une tisane chaude pour la satiété",
+      "📺 Évite les images de nourriture",
+      "🧹 Profite-en pour faire une petite tâche simple"
+    ],
+    motivation: "1 heure, bravo ! Ton corps passe en rythme de croisière."
+  },
+  2: {
+    icon: "🌿",
+    physiology: [
+      "Digestion terminée",
+      "Ton insuline poursuit sa descente",
+      "Ton foie prend le relais avec ses réserves"
+    ],
+    symptoms: [
+      "Gargouillis possibles",
+      "Premiers signaux de faim",
+      "Sensation de légèreté digestive"
+    ],
+    tips: [
+      "🚶 Petite marche de 10 min",
+      "🎵 Mets une playlist motivante",
+      "📞 Appelle un ami pour passer le temps"
+    ],
+    motivation: "2 heures, la digestion est derrière toi. Place à la transition !"
+  },
+  4: {
+    icon: "🌱",
+    physiology: [
+      "Ton foie libère son glycogène",
+      "Insuline en baisse, glucagon en hausse",
+      "La glycémie reste stable grâce au foie"
+    ],
+    symptoms: [
+      "Faim plus présente par vagues",
+      "Énergie qui peut fluctuer",
+      "Légère irritabilité possible"
+    ],
+    tips: [
+      "⏱️ Rappelle-toi : la faim vient et repart",
+      "🛀 Prends une douche tiède pour changer de sensation",
+      "🎮 Distrais-toi avec un jeu ou un film"
+    ],
+    motivation: "4 heures ! Tu entres dans le vrai jeûne, ton foie assure l’énergie."
+  },
+  6: {
+    icon: "🔋",
+    physiology: [
+      "Les réserves de glycogène s’utilisent activement",
+      "La fabrication de glucose par le foie démarre",
+      "Ton corps ajuste ses hormones"
+    ],
+    symptoms: [
+      "Un pic de faim peut arriver",
+      "Fatigue légère possible",
+      "Concentration parfois réduite"
+    ],
+    tips: [
+      "💊 Si maux de tête : eau + une pincée de sel",
+      "🛋️ Repose-toi un moment",
+      "🎧 Mets de la musique apaisante"
+    ],
+    motivation: "6 heures ! Tu franchis une étape clé, reste concentré sur ton objectif."
+  },
+  8: {
+    icon: "🔥",
+    physiology: [
+      "Les graisses commencent à être mobilisées",
+      "Petite production de cétones en marche",
+      "Ton énergie se stabilise peu à peu"
+    ],
+    symptoms: [
+      "La faim commence à diminuer",
+      "Énergie plus constante",
+      "Haleine légèrement différente possible"
+    ],
+    tips: [
+      "🚶 Fais une marche douce",
+      "☀️ Expose-toi un peu au soleil",
+      "📚 Profite de ta concentration"
+    ],
+    motivation: "8 heures ! Tes graisses commencent à entrer en jeu."
+  },
+  10: {
+    icon: "💪",
+    physiology: [
+      "La lipolyse est bien engagée",
+      "Les cétones montent doucement",
+      "Ton métabolisme bascule progressivement"
+    ],
+    symptoms: [
+      "Faim plus discrète",
+      "Clarté mentale parfois meilleure",
+      "Énergie stable"
+    ],
+    tips: [
+      "📝 Note tes idées, la concentration est bonne",
+      "🚫 Évite les efforts intenses",
+      "✅ Marche ou yoga léger conseillés"
+    ],
+    motivation: "10 heures ! Tu gagnes en stabilité et en force mentale."
+  },
+  12: {
+    icon: "⚡",
+    physiology: [
+      "Les graisses alimentent une part croissante de ton énergie",
+      "Les cétones deviennent plus présentes",
+      "L’hormone de croissance commence à grimper"
+    ],
+    symptoms: [
+      "Moins de fringales",
+      "Énergie mentale en hausse",
+      "Sensation de légèreté"
+    ],
+    tips: [
+      "🍵 Thé vert ou café noir autorisés",
+      "🏃 Marche douce si tu le sens",
+      "😴 Respecte ton besoin de repos"
+    ],
+    motivation: "12 heures ! Ton corps commence à changer de carburant."
+  },
+  14: {
+    icon: "🧘",
+    physiology: [
+      "La transition vers les graisses continue",
+      "Cétones de plus en plus présentes",
+      "Ton organisme trouve un nouvel équilibre"
+    ],
+    symptoms: [
+      "Faim atténuée",
+      "Clarté mentale agréable",
+      "Bien-être intérieur"
+    ],
+    tips: [
+      "🧘 Méditation 10 min",
+      "🎨 Activité créative",
+      "🌿 Promenade tranquille"
+    ],
+    motivation: "14 heures ! Tu entres dans une phase plus sereine."
+  },
+  16: {
+    icon: "✨",
+    physiology: [
+      "Ton énergie vient surtout des graisses",
+      "La cétose s’installe progressivement",
+      "Tes cellules enclenchent des mécanismes de réparation"
+    ],
+    symptoms: [
+      "Énergie mentale claire",
+      "Moins de faim",
+      "Sensation de fluidité"
+    ],
+    tips: [
+      "☕ Café noir possible pour booster",
+      "🚶 Marche méditative idéale",
+      "📸 Note tes ressentis"
+    ],
+    motivation: "16 heures ! Ton corps se transforme, c’est un cap majeur."
+  },
+  18: {
+    icon: "🦸",
+    physiology: [
+      "La cétose devient plus nette",
+      "Les graisses dominent comme carburant",
+      "Des processus de nettoyage cellulaire s’activent"
+    ],
+    symptoms: [
+      "Clarté mentale marquée",
+      "Peu ou pas de faim",
+      "Énergie régulière"
+    ],
+    tips: [
+      "🧊 Douche froide pour un boost naturel",
+      "📚 Profite de ta capacité d’apprentissage",
+      "🧘 Étirements ou yoga"
+    ],
+    motivation: "18 heures ! Ton corps exploite au mieux ses réserves."
+  },
+  20: {
+    icon: "💫",
+    physiology: [
+      "La bascule énergétique est solide",
+      "Les cétones alimentent ton cerveau",
+      "Ton corps active ses systèmes de recyclage"
+    ],
+    symptoms: [
+      "Clarté mentale haute",
+      "Sensation de légèreté",
+      "Sommeil parfois différent"
+    ],
+    tips: [
+      "🌙 Prépare-toi à une soirée calme",
+      "📝 Note 3 victoires de ta journée",
+      "🧘 Respiration ou méditation avant coucher"
+    ],
+    motivation: "20 heures ! Tu atteins un rythme intérieur puissant."
+  },
+  24: {
+    icon: "🎯",
+    physiology: [
+      "Les réserves de glycogène sont presque épuisées",
+      "Les graisses et cétones dominent",
+      "Les cellules enclenchent un vrai ménage intérieur"
+    ],
+    symptoms: [
+      "Énergie étonnamment stable",
+      "Clarté mentale élevée",
+      "Sensation de transformation"
+    ],
+    tips: [
+      "🥣 Prévois une reprise douce : bouillon, légumes",
+      "🚶 Fais une marche de victoire",
+      "📊 Note tes bénéfices ressentis"
+    ],
+    motivation: "24 heures ! Tu as franchi un cap impressionnant."
+  },
+  30: {
+    icon: "🔮",
+    physiology: [
+      "La cétose est bien marquée",
+      "Ton cerveau utilise les cétones avec efficacité",
+      "Les processus de réparation se poursuivent"
+    ],
+    symptoms: [
+      "Clarté mentale vive",
+      "Sommeil parfois modifié",
+      "Grande sensibilité intérieure"
+    ],
+    tips: [
+      "📔 Tiens un journal détaillé",
+      "🛌 Prends du repos",
+      "💧 Hydrate-toi avec électrolytes"
+    ],
+    motivation: "30 heures ! Tu entres en territoire rare, profite de l’expérience."
+  },
+  36: {
+    icon: "💎",
+    physiology: [
+      "La cétose est stable",
+      "Les mécanismes de recyclage cellulaire s’intensifient",
+      "Ton corps économise et répare"
+    ],
+    symptoms: [
+      "Paix intérieure",
+      "État de conscience particulier",
+      "Peu de sensations physiques"
+    ],
+    tips: [
+      "🛌 Repose-toi au maximum",
+      "🌿 Profite du calme",
+      "🩺 Surveille tes signaux corporels"
+    ],
+    motivation: "36 heures ! Tu explores un niveau rare de régénération."
+  },
+  42: {
+    icon: "🌸",
+    physiology: [
+      "La réparation cellulaire se poursuit",
+      "Les voies de longévité s’activent",
+      "Ton organisme se renouvelle en profondeur"
+    ],
+    symptoms: [
+      "Bien-être marqué",
+      "Émotions plus intenses",
+      "Sentiment de renouveau"
+    ],
+    tips: [
+      "😭 Laisse sortir tes émotions",
+      "🫁 Respiration profonde",
+      "🎵 Sons ou musique apaisante"
+    ],
+    motivation: "42 heures ! C’est une renaissance intérieure."
+  },
+  48: {
+    icon: "👑",
+    physiology: [
+      "La cétose est maximale",
+      "Ton organisme recycle ses cellules",
+      "Les systèmes de régulation sont profondément activés"
+    ],
+    symptoms: [
+      "Calme mental profond",
+      "Énergie spirituelle marquée",
+      "Détachement du physique"
+    ],
+    tips: [
+      "⚠️ Prévois une reprise douce sur plusieurs jours",
+      "🍲 Bouillons et légumes en premier",
+      "🏥 Consulte si besoin, c’est un seuil sérieux"
+    ],
+    motivation: "48 heures ! Tu es dans la légende du jeûne."
+  },
+  60: {
+    icon: "🏔️",
+    physiology: [
+      "Ton organisme vit à plein sur ses graisses",
+      "Les processus de réparation avancent",
+      "Un calme biologique profond s’installe"
+    ],
+    symptoms: [
+      "Fatigue ou paix intérieure",
+      "Perception modifiée",
+      "Clarté stable"
+    ],
+    tips: [
+      "🚨 Fais-toi accompagner médicalement",
+      "💧 Électrolytes obligatoires",
+      "🛏️ Zéro effort physique"
+    ],
+    motivation: "60 heures ! C’est un sommet, exigeant mais grandiose."
+  },
+  72: {
+    icon: "🌟",
+    physiology: [
+      "Cétose soutenue",
+      "Mécanismes de nettoyage à leur maximum",
+      "Ton corps fonctionne en mode minimaliste"
+    ],
+    symptoms: [
+      "État de transcendance possible",
+      "Énergie stable mais fragile",
+      "Grande sérénité"
+    ],
+    tips: [
+      "🚑 Encadrement médical recommandé",
+      "🥣 Reprise ultra progressive",
+      "📖 Note ton expérience pour t’en souvenir"
+    ],
+    motivation: "72 heures ! Mythique. Tu as atteint un accomplissement rare."
+  }
+};
+
 
     const phases = [
         {
